@@ -21,4 +21,17 @@ module.exports = {
     ],
     "prettier/prettier": "error",
   },
+  settings: {
+    'import/resolver': {
+      alias: {
+        map: [
+          ["@myHooks", "./src/hooks"],
+          ["@myComponents", "./src/components"],
+          ["@myCommon", "./src/common"],
+          ["@myStore", "./src/store"],
+          ["@myTypes", "./src/types"],
+        ]
+      }
+    }
+  }
 }
