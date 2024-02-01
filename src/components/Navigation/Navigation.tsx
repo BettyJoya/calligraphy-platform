@@ -21,13 +21,17 @@ const Navigation = () => {
       {NavList.map(item =>
         item.key === 'more' ? (
           <div key={item.key} className="nav-more">
-            <item.icon className="nav-icon" />
-            <span>{item.title}</span>
+            <div className="nav-content">
+              <item.icon className="nav-icon" />
+              <span className="nav-title">{item.title}</span>
+            </div>
           </div>
         ) : (
           <div key={item.key} className="nav-item" onClick={handleNavigate(item.key)}>
-            <item.icon className="nav-icon" />
-            <span>{item.title}</span>
+            <div className="nav-content">
+              <item.icon className="nav-icon" />
+              <span className="nav-title">{item.title}</span>
+            </div>
           </div>
         )
       )}
