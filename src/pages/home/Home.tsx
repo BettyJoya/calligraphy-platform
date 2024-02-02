@@ -1,7 +1,7 @@
-import './home.css';
+import { FC } from 'react';
 
-function Home() {
-  return <div className="home-contaner">home</div>;
-}
+const Home: FC = () => {
+  return <div>Home</div>;
+};
 
 export { Home };

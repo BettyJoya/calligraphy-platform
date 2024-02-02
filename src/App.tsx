@@ -1,7 +1,5 @@
 import { useEffect } from 'react';
 import { Outlet, useNavigate, useLocation } from 'react-router-dom';
-import { Navigation } from './components/Navigation/Navigation.tsx';
-import './app.css';
 
 function App() {
   const navigate = useNavigate();
@@ -14,12 +12,9 @@ function App() {
   });
 
   return (
-    <div className="container">
-      <Navigation />
-      <main className="main">
-        <Outlet />
-      </main>
-    </div>
+    <>
+      <Outlet></Outlet>
+    </>
   );
 }
 
