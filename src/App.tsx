@@ -7,7 +7,7 @@ function App() {
 
   useEffect(() => {
     if (location.pathname === '/') {
-      navigate('/home');
+      navigate('/home/copyBook');
     }
   });
 

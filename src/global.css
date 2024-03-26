@@ -16,22 +16,28 @@ ul, li, ol {
   list-style-type: none;
 }
 
+svg {
+  width: 20px;
+  height: 20px;
+}
+
 :root {
-  --main-theme-color: rgb(179 69 113);
-  --main-theme-hover-outlined-color: rgb(179 69 113 / 25.3%);
-  --main-theme-hover-contained-color:rgb(146 25 73);
-  --main-background-color: #fff;
-  --active-background-color: rgb(0 0 0 / 6%);
-  --main-font-color: #0a0a0a;
+  --main-theme-color: #ec9bad;
+  --main-theme-hover-outlined-color: rgb(75 30 47 / 25.3%);
+  --main-theme-hover-contained-color:#e6dddd;
+  --main-background-color: #f3eaeb;
+  --active-background-color: #ffdad9;
+  --main-font-color: #534343;
+  --hover-font-color: #211a1a;
   --inactive-font-color: rgb(51 51 51 / 70%);
-  --main-icon-color: #0a0a0a;
-  --active-font-color: #ff2442;
+  --main-icon-color: #534343;
+  --active-font-color: #2d1516;
   --mask-start-color: rgb(255 255 255 / 100%);
   --mask-end-color: rgb(255 255 255 / 0%);
 
   overflow: hidden;
   color: var(--main-font-color);
-  background-color: var(--main-background-color);
+  background-color: #fff;
 }
 
 @media (prefers-color-scheme: dark) {

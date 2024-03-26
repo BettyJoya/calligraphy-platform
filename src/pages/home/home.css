@@ -1,0 +1,22 @@
+.home {
+  display: flex;
+  flex-direction: row;
+  width: 100dvw;
+  height: 100dvh;
+}
+
+.home-main {
+  flex: 1;
+  order: 1;
+  padding: 8px;
+}
+
+@media screen and (width < 900px) {
+  .home {
+    flex-direction: column;
+  }
+
+  .home-main {
+    order: 0;
+  }
+}
