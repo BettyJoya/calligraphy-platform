@@ -1,7 +1,50 @@
 .copy-book-card-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
   justify-content: space-around;
+  height: 100%;
   margin-top: 20px;
+  margin-right: -10px;
+}
+
+.copy-book-card-list > i {
+  width: 300px;
+  margin-right: 10px;
+}
+
+.book-card {
+  width: 220px;
+  height: 220px;
+  margin: 20px 10px 0 0;
+  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 10%), 0 6px 20px 0 rgb(0 0 0 / 10%);
+}
+
+.book-card:hover {
+  transition: all 0.3s;
+  transform: scale(1.02);
+}
+
+.book-card .card-img {
+  width: 100%;
+  height: 80%;
+  border-radius: 10px;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+
+.book-card .card-text {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.book-card .card-text h3, .book-card .card-text p {
+  margin: 0;
 }

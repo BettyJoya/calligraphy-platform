@@ -21,8 +21,44 @@ svg {
   height: 20px;
 }
 
+.error-message {
+  position: fixed;
+  top: -50px;
+  left: calc(50% - 250px);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 500px;
+  height: 50px;
+  font-size: larger;
+  color: white;
+  background-color: #a72727;
+  border-radius: 9999px;
+  opacity: 0.85;
+  transition: top 0.5s ease-in-out;
+}
+  
+.error-message-show {
+  position: fixed;
+  top: 10px;
+  left: calc(50% - 250px);
+  z-index: 9999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 500px;
+  height: 50px;
+  font-size: larger;
+  color: white;
+  background-color: #a72727;
+  border-radius: 9999px;
+  opacity: 0.85;
+  transition: top 0.5s ease-in-out;
+}
+
 :root {
-  --main-theme-color: #ec9bad;
+  --main-theme-color: #9c4146;
   --main-theme-hover-outlined-color: rgb(75 30 47 / 25.3%);
   --main-theme-hover-contained-color:#e6dddd;
   --main-background-color: #f3eaeb;

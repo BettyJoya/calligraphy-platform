@@ -1,0 +1,92 @@
+.copy-book-detail {
+  position: relative;
+  height: 100%;
+}
+
+.copy-book-detail-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 50px;
+  padding: 0 15px;
+  background-color: #fff;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.copy-book-detail-header h3 {
+  font-size: 24px;
+}
+
+.copy-book-detail-header .operate {
+  display: flex;
+  align-items: center;
+}
+
+.copy-book-detail-header .btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.copy-book-detail-header .btn:hover {
+  background-color: var(--main-theme-hover-contained-color);
+}
+
+.copy-book-detail-header .btn svg {
+  width: 25px;
+  height: 25px;
+}
+
+.copy-book-detail-content {
+  width: 100%;
+  padding: 20px;
+}
+
+.copy-book-detail-content .img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+}
+
+.copy-book-detail-content .img img {
+  /* 截取一部分 */
+  width: 60%;
+  height: 100%;
+}
+
+.copy-book-detail-content .author {
+  margin-top: 10px;
+  font-size: 20px;
+  text-align: center;
+}
+
+.copy-book-detail-footer {
+  /* 固定在底部 */
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 30px 0;
+}
+
+.copy-book-detail-footer .footer-btn {
+  width: 150px;
+  height: 50px;
+  font-weight: 600;
+  line-height: 50px;
+  text-align: center;
+  cursor: pointer;
+  background-color: var(--main-background-color);
+  border-radius: 20px;
+}
+
+.copy-book-detail-footer .footer-btn:hover {
+  background-color: var(--active-background-color);
+}

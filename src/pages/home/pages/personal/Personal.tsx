@@ -1,15 +1,16 @@
 import { FC, useEffect } from 'react';
-import HeadImg from '../../../../assets/headImg.jpg';
+import HeadImg from '../../../../assets/head.png';
 import './personal.css';
 import { useNavigate, useParams } from 'react-router-dom';
+import { Login } from '../login/Login.tsx';
 
 const Personal: FC = () => {
   return (
     <div className="personal">
       <div className="base-info">
-        <img src={HeadImg} alt="头像" />
-        <div className="text-info">
-          {/* <h1>登录/注册</h1> */}
+        <img src={HeadImg} alt="头像" style={{ backgroundColor: 'var(--main-background-color)' }} />
+        <Login />
+        {/* <div className="text-info">
           <h1>BettyJoya</h1>
           <p>BettyJoya的个人简介BettyJoya的个人简介BettyJoya的个人简介</p>
           <div className="more">
@@ -26,7 +27,7 @@ const Personal: FC = () => {
               <span>0</span>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
       <PersonalContent></PersonalContent>
     </div>

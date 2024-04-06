@@ -6,8 +6,8 @@
 }
 
 .search-input {
-  width: 80%;
-  height: 70px;
+  width: 50%;
+  height: 55px;
   padding: 20px 30px;
   font-size: 18px;
   caret-color: var(--main-font-color);
