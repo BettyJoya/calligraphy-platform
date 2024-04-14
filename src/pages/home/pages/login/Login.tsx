@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { FC } from 'react';
+import { useDispatch } from 'react-redux';
+import { loginAction } from '@myStore/slices/loginSlice.ts';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
@@ -19,13 +21,13 @@ import './login.css';
 import { fetchData } from '@myCommon/fetchData.ts';
 import JSEncrypt from 'jsencrypt';
 import localforage from 'localforage';
-// import { ErrorMessage } from '@myCommon/errorMessage.ts';
 import { FormHelperText } from '@mui/material';
 import MessageSnackbar from '@myComponents/message/Message.tsx';
 
 const encryptor = new JSEncrypt();
 
 const Login: FC = () => {
+  const dispatch = useDispatch();
   const [open, setOpen] = React.useState(false);
   const [registerOpen, setRegisterOpen] = React.useState(false);
   const [forgetOpen, setForgetOpen] = React.useState(false);
@@ -165,19 +167,26 @@ const Login: FC = () => {
       const encryptedPassword = await getEncrypted(formJson.password as string);
       const res = await fetchData<{ time: number; token: string }, { email: string; password: string }>(
         'POST',
-        { url: 'http://localhost:3001/api/users/login' },
+        {
+          url: 'http://localhost:3001/api/users/login',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        },
         {
           email: formJson.email as string,
           password: encryptedPassword
         }
       );
-      console.log(res);
       if (res.code === 200) {
         localforage.setItem('time', res.data.time);
         localforage.setItem('token', res.data.token);
+        dispatch(loginAction());
         setMessageOpen(true);
         setMessageType('success');
         setMessage('登录成功！');
+        // // 刷新页面
+        // window.location.reload();
       } else if (res.code === 503) {
         throw new Error('邮箱或密码错误！');
       } else if (res.code === 505) {
@@ -289,7 +298,12 @@ const Login: FC = () => {
       const encryptedCertifyCharacters = await getEncrypted(formData.vertificationWord);
       const res = await fetchData<never, { email: string; password: string; name: string; vertificationWord: string }>(
         'POST',
-        { url: 'http://localhost:3001/api/users/register' },
+        {
+          url: 'http://localhost:3001/api/users/register',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        },
         {
           email: formData.email,
           password: encryptedPassword,
@@ -323,7 +337,7 @@ const Login: FC = () => {
 
   return (
     <React.Fragment>
-      <div className="text-info" onClick={handleClickOpen}>
+      <div className="text" onClick={handleClickOpen}>
         <h1>登录/注册</h1>
       </div>
       <Dialog

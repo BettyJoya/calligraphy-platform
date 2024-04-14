@@ -1,32 +1,104 @@
-import { FC } from 'react';
+import { FC, useEffect, useState } from 'react';
 import './copyBookDetail.css';
 import {
   MdArrowBack,
   MdFavoriteBorder,
   // MdOutlineFavorite,
   MdOutlineStarBorder,
-  // MdOutlineStar,
+  MdOutlineStar,
   MdOutlineIosShare
 } from 'react-icons/md';
-import CopyBookImg from '../../../../../../assets/copybook.jpg';
+import { useParams } from 'react-router-dom';
+import { fetchData } from '@myCommon/fetchData.ts';
+
+interface CopyBookDetail {
+  id: string;
+  name: string;
+  author: string;
+  mainPic: string;
+  description: string;
+  isCollected: number;
+}
 
 const CopyBookDetail: FC = () => {
+  const param = useParams();
+  const [copyBookDetail, setCopyBookDetail] = useState<CopyBookDetail | undefined>(undefined);
+  const [mainImg, setMainImg] = useState<string>('');
+
   const handleBackClick = () => {
     window.history.back();
   };
+
+  useEffect(() => {
+    const copyBookDetailFetch = async () => {
+      try {
+        const res = await fetchData<string | CopyBookDetail>('GET', {
+          url: `http://localhost:3001/api/copybook/copybook-detail/${param.id}`
+        });
+        if (res.code === 200) {
+          setCopyBookDetail(res.data as CopyBookDetail);
+          setMainImg(`data:image/img;base64,${(res.data as CopyBookDetail).mainPic}`);
+        } else {
+          throw new Error(res.data as string);
+        }
+      } catch (error) {
+        if (error instanceof Error) {
+          console.log(error.message);
+        }
+      }
+    };
+
+    copyBookDetailFetch();
+  }, [param.id]);
+
+  const handleCollect = async () => {
+    try {
+      const res = await fetchData(
+        'POST',
+        {
+          url: `http://localhost:3001/api/copybook/collect`,
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        },
+        {
+          copybookId: param.id,
+          isCollected: copyBookDetail?.isCollected === 1 ? 0 : 1
+        }
+      );
+      if (res.code === 200) {
+        setCopyBookDetail(prev => {
+          if (prev) {
+            return {
+              ...prev,
+              isCollected: prev.isCollected === 1 ? 0 : 1
+            };
+          }
+          return prev;
+        });
+      } else {
+        throw new Error(res.data as string);
+      }
+    } catch (error) {
+      if (error instanceof Error) {
+        console.log(error.message);
+      }
+    }
+  };
+
   return (
     <div className="copy-book-detail">
       <div className="copy-book-detail-header">
         <div className="btn" onClick={handleBackClick}>
           <MdArrowBack />
         </div>
-        <h3 className="title">上善若水</h3>
+        <h3 className="title">{copyBookDetail?.name}</h3>
         <div className="operate">
           <div className="btn">
             <MdFavoriteBorder />
           </div>
-          <div className="btn">
-            <MdOutlineStarBorder />
+          <div className="btn" onClick={handleCollect}>
+            {copyBookDetail?.isCollected === 1 ? <MdOutlineStar /> : <MdOutlineStarBorder />}
           </div>
           <div className="btn">
             <MdOutlineIosShare />
@@ -35,16 +107,12 @@ const CopyBookDetail: FC = () => {
       </div>
       <div className="copy-book-detail-content">
         <div className="img">
-          <img src={CopyBookImg} alt="" />
+          <img src={mainImg} alt="" />
         </div>
-        <div className="author">王羲之</div>
+        <div className="author">{copyBookDetail?.author}</div>
         <div className="content">
           <h4>介绍：</h4>
-          <p>
-            上善若水，水善利万物而不争，处众人之所恶，故几于道。居善地，心善渊，与善仁，言善信，正善治，事善能，动善时。夫唯不争，故无尤。
-            上善若水，水善利万物而不争，处众人之所恶，故几于道。居善地，心善渊，与善仁，言善信，正善治，事善能，动善时。夫唯不争，故无尤。
-            上善若水，水善利万物而不争，处众人之所恶，故几于道。居善地，心善渊，与善仁，言善信，正善治，事善能，动善时。夫唯不争，故无尤。
-          </p>
+          <p>{copyBookDetail?.description}</p>
         </div>
       </div>
       <div className="copy-book-detail-footer">

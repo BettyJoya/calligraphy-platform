@@ -6,16 +6,15 @@
   display: flex;
   align-items: center;
   width: 100%;
-  height: 160px;
-  padding: 30px;
-  cursor: pointer;
+  height: 200px;
+  padding: 20px 30px;
   background-color: var(--active-background-color);
   border-radius: 20px;
 }
 
 .base-info img {
-  width: 120px;
-  height: 120px;
+  width: 150px;
+  height: 150px;
   background-color: #ececec;
   border-radius: 50%;
 }
@@ -25,7 +24,6 @@
 }
 
 .base-info .text-info h1 {
-  line-height: 70px;
   color: var(--main-font-color);
 }
 
@@ -37,6 +35,18 @@
   margin-right: 20px;
 }
 
+.base-info .name-ope {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.base-info .name-ope button.btn {
+  color: white;
+  background-color: var(--main-theme-color);
+}
+
 .personal-content {
   margin-top: 8px;
 }
@@ -45,9 +55,9 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  height: 88px;
+  height: 68px;
   background-color: var(--main-background-color);
-  border-radius: 40px;
+  border-radius: 30px;
 }
 
 .personal-nav .nav-item {
@@ -57,7 +67,7 @@
   height: 100%;
   font-weight: bold;
   color: var(--main-font-color);
-  border-radius: 40px;
+  border-radius: 30px;
 }
 
 .personal-nav .nav-item:hover {

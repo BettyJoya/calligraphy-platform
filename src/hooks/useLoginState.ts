@@ -14,7 +14,7 @@ export const useLoginState = () => {
       }
       // 如果时间戳不存在或者时间戳加七天小于当前时间戳，就将登录状态设置为 logout
       if (!time || time + 7 * 24 * 60 * 60 * 1000 < Date.now()) {
-        navigate('/home/copyBook');
+        navigate('/home/personal/record');
       } else {
         dispatch(loginAction());
       }

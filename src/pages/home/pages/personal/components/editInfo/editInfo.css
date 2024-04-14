@@ -1,0 +1,41 @@
+.edit-dialog form {
+  width: 350px;
+  padding-bottom: 10px;
+}
+
+.edit-dialog form h2 {
+  font-weight: 600;
+  color: var(--main-font-color);
+}
+
+.edit-dialog form h2, .edit-dialog form p {
+  text-align: center;
+}
+
+/* stylelint-disable-next-line selector-class-pattern */
+.edit-dialog form button, .edit-dialog form .Mui-focused {
+  color: var(--main-theme-color);
+}
+
+.edit-dialog form button.btn {
+  background-color: var(--main-background-color);
+}
+
+.edit-dialog form .btn-actions button:hover {
+  background-color: var(--main-theme-hover-contained-color);
+}
+
+
+.edit-dialog form .edit-input {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.edit-dialog form .edit-input div::after {
+  border-bottom: 2px solid var(--main-theme-color);
+}
+
+.edit-dialog form .btn-actions {
+  justify-content: center;
+  padding: 0 10px;
+}
