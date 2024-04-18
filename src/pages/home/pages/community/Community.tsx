@@ -2,6 +2,11 @@
 import { FC, useState } from 'react';
 import './community.css';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import { MdFiberNew, MdStars } from 'react-icons/md';
+
+import { Attention } from './pages/attention/Attention.tsx';
+import { Recommend } from './pages/recommend/Recommend.tsx';
+import { New } from './pages/new/New.tsx';
 
 const Community: FC = () => {
   // const navigate = useNavigate();
@@ -32,21 +37,15 @@ const Community: FC = () => {
             className={currentKind === 'recommend' ? 'nav-item active' : 'nav-item'}
             onClick={changeKind('recommend')}
           >
-            推荐
+            <MdStars /> 推荐
           </div>
           <div className={currentKind === 'new' ? 'nav-item active' : 'nav-item'} onClick={changeKind('new')}>
-            最新
+            <MdFiberNew /> 最新
           </div>
         </div>
       </div>
       <div className="community-main">
-        {currentKind === 'attention' ? (
-          <div>关注</div>
-        ) : currentKind === 'recommend' ? (
-          <div>推荐</div>
-        ) : (
-          <div>最新</div>
-        )}
+        {currentKind === 'attention' ? <Attention /> : currentKind === 'recommend' ? <Recommend /> : <New />}
       </div>
       {/* <MessageSnackbar
         vertical="top"
