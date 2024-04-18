@@ -1,0 +1,42 @@
+.community .nav-container {
+  display: flex;
+  justify-content: center;
+}
+
+.community .community-nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  height: 58px;
+  background-color: var(--main-background-color);
+  border-radius: 40px;
+}
+
+.community-nav-bar .nav-item {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-weight: bold;
+  color: var(--main-font-color);
+  border-radius: 40px;
+}
+
+.community-nav-bar .nav-item:hover {
+  color: var(--hover-font-colo);
+}
+
+.community-nav-bar .nav-item:not(.active):hover {
+  background: var(--main-theme-hover-contained-color);
+}
+
+.community-nav-bar .active {
+  color: var(--active-font-color);
+  background-color: var(--active-background-color);
+}
+
+.community-main {
+  padding: 20px;
+}
