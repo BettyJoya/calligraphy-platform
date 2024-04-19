@@ -1,6 +1,43 @@
+.writing .search-bar {
+  gap: 20px;
+}
+
 .writing-letter-list {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-around;
+  height: 100%;
+  margin-top: 20px;
+  margin-right: -10px;
+}
+
+.writing-letter-list > i {
+  width: 120px;
+  margin-right: 10px;
+}
+
+.select-form-control {
+  width: 10%;
+  height: 55px;
+}
+
+/* stylelint-disable-next-line selector-class-pattern */
+.select-form-control div.Mui-focused fieldset.MuiOutlinedInput-notchedOutline {
+  border-color: var(--main-font-color);
+}
+
+/* stylelint-disable-next-line selector-class-pattern */
+#font-type-select-label.Mui-focused {
+  color: var(--main-font-color);
+}
+
+#font-type-select {
+  background-color: var(--main-background-color);
+}
+
+/* stylelint-disable-next-line selector-class-pattern */
+.font-type-menu-item.Mui-selected {
+  background-color: var(--main-background-color) !important;
 }
 
 .letter-card {

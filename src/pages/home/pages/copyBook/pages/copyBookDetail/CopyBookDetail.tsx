@@ -8,7 +8,7 @@ import {
   MdOutlineStar,
   MdOutlineIosShare
 } from 'react-icons/md';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { fetchData } from '@myCommon/fetchData.ts';
 
 interface CopyBookDetail {
@@ -22,6 +22,7 @@ interface CopyBookDetail {
 
 const CopyBookDetail: FC = () => {
   const param = useParams();
+  const navigate = useNavigate();
   const [copyBookDetail, setCopyBookDetail] = useState<CopyBookDetail | undefined>(undefined);
   const [mainImg, setMainImg] = useState<string>('');
 
@@ -86,6 +87,10 @@ const CopyBookDetail: FC = () => {
     }
   };
 
+  const handleWriteClick = () => {
+    navigate(`/home/writing/${param.id}`);
+  };
+
   return (
     <div className="copy-book-detail">
       <div className="copy-book-detail-header">
@@ -116,7 +121,9 @@ const CopyBookDetail: FC = () => {
         </div>
       </div>
       <div className="copy-book-detail-footer">
-        <div className="footer-btn">临帖</div>
+        <div className="footer-btn" onClick={handleWriteClick}>
+          临帖
+        </div>
       </div>
     </div>
   );

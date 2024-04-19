@@ -13,7 +13,9 @@ export const router = createBrowserRouter(
         <Route caseSensitive element={<CopyBook />} path="copyBook">
           <Route caseSensitive path=":id" element={<CopyBookDetail />} />
         </Route>
-        <Route caseSensitive element={<Writing />} path="writing" />
+        <Route caseSensitive element={<Writing />} path="writing">
+          <Route caseSensitive path=":id" element={<Writing />} />
+        </Route>
         <Route caseSensitive element={<Community />} path="community"></Route>
         <Route caseSensitive element={<Personal />} path="personal">
           <Route caseSensitive path=":kind" element={<PersonalContent />} />

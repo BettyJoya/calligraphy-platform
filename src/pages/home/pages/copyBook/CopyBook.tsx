@@ -4,6 +4,7 @@ import { Outlet, useNavigate, useParams } from 'react-router-dom';
 import { fetchData } from '@myCommon/fetchData.ts';
 import { CopyBookInfo } from './types.ts';
 import { BookCard } from './components/bookCard/BookCard.tsx';
+import { addHistoryFetch } from '@myCommon/addHistoryFetch.ts';
 
 const CopyBook: FC = () => {
   const navigate = useNavigate();
@@ -35,29 +36,6 @@ const CopyBook: FC = () => {
     getBookList();
   }, []);
 
-  const addHistoryFetch = async (id: string) => {
-    try {
-      const res = await fetchData(
-        'POST',
-        {
-          url: `http://localhost:3001/api/copybook/addHistory`,
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        },
-        {
-          copybookId: id
-        }
-      );
-      if (res.code !== 200) {
-        throw new Error(res.data as string);
-      }
-    } catch (error) {
-      if (error instanceof Error) {
-        console.log(error.message);
-      }
-    }
-  };
   const handleBookCardClick = (id: string) => {
     return () => {
       addHistoryFetch(id);
