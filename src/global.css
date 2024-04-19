@@ -57,9 +57,28 @@ svg {
   transition: top 0.5s ease-in-out;
 }
 
+.contained-btn {
+  color: #fff !important;
+  background-color: var(--main-theme-color) !important;
+}
+
+.contained-btn:hover {
+  background-color: var(--main-theme-hover-contained-btn-color) !important;
+}
+
+.outlined-btn {
+  color: var(--main-theme-color) !important;
+  border: 1px solid rgb(156 65 70 / 30%) !important;
+}
+
+.outlined-btn:hover {
+  background-color: var(--main-theme-hover-outlined-color) !important;
+}
+
 :root {
-  --main-theme-color: #9c4146;
-  --main-theme-hover-outlined-color: rgb(75 30 47 / 25.3%);
+  --main-theme-color: rgb(156 65 70);
+  --main-theme-hover-outlined-btn-color: rgb(156 65 70 / 10%);
+  --main-theme-hover-contained-btn-color: rgb(142 62 67);
   --main-theme-hover-contained-color:#e6dddd;
   --main-background-color: #f3eaeb;
   --active-background-color: #ffdad9;
