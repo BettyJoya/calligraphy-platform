@@ -1,15 +1,16 @@
 // import MessageSnackbar from '@myComponents/message/Message';
 import { FC, useState } from 'react';
 import './community.css';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import { MdFiberNew, MdStars } from 'react-icons/md';
 
 import { Attention } from './pages/attention/Attention.tsx';
 import { Recommend } from './pages/recommend/Recommend.tsx';
 import { New } from './pages/new/New.tsx';
+import { Outlet, useParams } from 'react-router-dom';
 
 const Community: FC = () => {
   // const navigate = useNavigate();
+  const param = useParams();
+  const id = param.id;
   const [currentKind, setCurrentKind] = useState('recommend');
   // const [messageOpen, setMessageOpen] = useState(false);
   // const [message, setMessage] = useState('');
@@ -23,7 +24,7 @@ const Community: FC = () => {
     };
   };
 
-  return (
+  return !id ? (
     <div className="community">
       <div className="nav-container">
         <div className="community-nav-bar">
@@ -31,16 +32,16 @@ const Community: FC = () => {
             className={currentKind === 'attention' ? 'nav-item active' : 'nav-item'}
             onClick={changeKind('attention')}
           >
-            <FavoriteIcon /> 关注
+            关注
           </div>
           <div
             className={currentKind === 'recommend' ? 'nav-item active' : 'nav-item'}
             onClick={changeKind('recommend')}
           >
-            <MdStars /> 推荐
+            推荐
           </div>
           <div className={currentKind === 'new' ? 'nav-item active' : 'nav-item'} onClick={changeKind('new')}>
-            <MdFiberNew /> 最新
+            最新
           </div>
         </div>
       </div>
@@ -56,6 +57,8 @@ const Community: FC = () => {
         setOpen={setMessageOpen}
       /> */}
     </div>
+  ) : (
+    <Outlet />
   );
 };
 

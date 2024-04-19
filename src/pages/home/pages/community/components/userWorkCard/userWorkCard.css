@@ -1,0 +1,46 @@
+.user-work-card {
+  width: 250px;
+  height: 300px;
+  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 10%), 0 6px 20px 0 rgb(0 0 0 / 10%);
+}
+
+.user-work-card:hover{
+  transition: all 0.3s;
+  transform: scale(1.02);
+}
+
+.user-work-card .work-img {
+  width: 100%;
+  height: 75%;
+}
+
+.user-work-card .title {
+  margin: 5px 10px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.user-work-card .info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+}
+
+.user-work-card .info .user .user-img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.user-work-card .info .user, .user-work-card .info .like {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.user-work-card .info .like svg {
+  color: var(--main-theme-color);
+}

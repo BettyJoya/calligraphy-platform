@@ -1,0 +1,47 @@
+.user-work-detail-header {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  height: 50px;
+  padding: 0 15px;
+  background-color: #fff;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.user-work-detail-header .btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.user-work-detail-header .btn:hover {
+  background-color: var(--main-theme-hover-contained-color);
+}
+
+.user-work-detail-header .btn svg {
+  width: 25px;
+  height: 25px;
+}
+
+.user-work-detail-header .user {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.user-work-detail-header .user .info {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.user-work-detail-header .user .info img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
