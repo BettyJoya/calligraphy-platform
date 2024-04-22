@@ -74,6 +74,8 @@ async function fetchData<Data, Params>(
       if (response.status === 404) {
         throw new Error('404');
       }
+
+      // if (response)
       const responseJson = await response.json();
       return responseJson;
     } catch (err) {

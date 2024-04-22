@@ -2,7 +2,7 @@ import { FC, useEffect, useState } from 'react';
 import './writing.css';
 import { fetchData } from '@myCommon/fetchData.ts';
 import { FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from '@mui/material';
-import { useParams } from 'react-router-dom';
+import { useParams, Outlet, useNavigate } from 'react-router-dom';
 // import { addHistoryFetch } from '@myCommon/addHistoryFetch';
 
 interface LetterInfo {
@@ -15,6 +15,8 @@ interface LetterInfo {
 
 const Writing: FC = () => {
   const params = useParams();
+  const navigate = useNavigate();
+  const id = params.id;
   const [letterList, setLetterList] = useState<LetterInfo[]>([]);
   const [filterLetterList, setFilterLetterList] = useState<LetterInfo[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -134,6 +136,7 @@ const Writing: FC = () => {
 
   const handleLetterCardClick = (id: string) => () => {
     console.log(id);
+    navigate(`/home/writing/${id}`);
     // addHistoryFetch(id);
   };
 
@@ -162,7 +165,7 @@ const Writing: FC = () => {
   if (loading) {
     return <div>loading...</div>;
   }
-  return (
+  return !id ? (
     <div className="writing">
       <div className="search-bar">
         <input className="search-input" type="text" placeholder="输入您想写的字" onChange={handleFilter} />
@@ -211,6 +214,8 @@ const Writing: FC = () => {
         <i></i>
       </div>
     </div>
+  ) : (
+    <Outlet />
   );
 };
 

@@ -5,13 +5,20 @@ import { fetchData } from '@myCommon/fetchData.ts';
 import { CopyBookInfo } from './types.ts';
 import { BookCard } from './components/bookCard/BookCard.tsx';
 import { addHistoryFetch } from '@myCommon/addHistoryFetch.ts';
+import MessageSnackbar from '@myComponents/message/Message.tsx';
+import { useSelector } from 'react-redux';
+import { selectLogin } from '@myStore/slices/loginSlice.ts';
 
 const CopyBook: FC = () => {
+  const loginState = useSelector(selectLogin);
   const navigate = useNavigate();
   const id = useParams().id;
   const [bookList, setBookList] = useState<CopyBookInfo[]>([]);
   const [filterBookList, setFilterBookList] = useState<CopyBookInfo[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
+  const [messageOpen, setMessageOpen] = useState(false);
+  const [message, setMessage] = useState('');
+  const [messageType, setMessageType] = useState<'success' | 'error' | 'info' | 'warning'>('success');
   // let bookListData: CopyBookInfo[] = [];
   const getBookList = async () => {
     try {
@@ -38,6 +45,12 @@ const CopyBook: FC = () => {
 
   const handleBookCardClick = (id: string) => {
     return () => {
+      if (loginState !== 'login') {
+        setMessage('请先登录');
+        setMessageType('error');
+        setMessageOpen(true);
+        return;
+      }
       addHistoryFetch(id);
       navigate(`/home/copyBook/${id}`);
     };
@@ -68,6 +81,14 @@ const CopyBook: FC = () => {
         <i></i>
         <i></i>
         <i></i>
+        <MessageSnackbar
+          vertical="top"
+          horizontal="center"
+          open={messageOpen}
+          message={message}
+          type={messageType}
+          setOpen={setMessageOpen}
+        />
       </div>
     </div>
   ) : (
