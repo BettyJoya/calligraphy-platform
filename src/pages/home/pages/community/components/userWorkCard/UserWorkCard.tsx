@@ -1,27 +1,33 @@
 import { FC } from 'react';
-import { MdOutlineStar, MdOutlineStarBorder } from 'react-icons/md';
-import type { WorkInfo } from '../../types.ts';
+import { MdFavorite, MdFavoriteBorder, MdOutlineStar, MdOutlineStarBorder } from 'react-icons/md';
+import type { ArticleInfo } from '../../types.ts';
 import './userWorkCard.css';
 
 interface UserWorkCardProps {
-  workInfo: WorkInfo;
+  articleInfo: ArticleInfo;
   onCardClick: () => void;
 }
 
 const UserWorkCard: FC<UserWorkCardProps> = (props: UserWorkCardProps) => {
-  const { workInfo, onCardClick } = props;
+  const { articleInfo, onCardClick } = props;
   return (
     <div className="user-work-card" onClick={onCardClick}>
-      <img className="work-img" src={workInfo.mainPic}></img>
-      <p className="title">{workInfo.title}</p>
+      <img className="work-img" src={`data:image/png;base64,${articleInfo.user_pic}`}></img>
+      <p className="title">{articleInfo.title}</p>
       <div className="info">
         <div className="user">
-          <img className="user-img" src={workInfo.userAvatar}></img>
-          <div className="name">{workInfo.userName}</div>
+          <img className="user-img" src={`data:image/png;base64,${articleInfo.user_avatar}`}></img>
+          <div className="name">{articleInfo.user_name}</div>
         </div>
-        <div className="like">
-          {workInfo.isLike ? <MdOutlineStar /> : <MdOutlineStarBorder />}
-          <div>{workInfo.likeCount}</div>
+        <div className="operation">
+          <div className="like">
+            {articleInfo.is_like ? <MdFavorite /> : <MdFavoriteBorder />}
+            <div>{articleInfo.likes_count}</div>
+          </div>
+          <div className="like">
+            {articleInfo.is_collect ? <MdOutlineStar /> : <MdOutlineStarBorder />}
+            <div>{articleInfo.collects_count}</div>
+          </div>
         </div>
       </div>
     </div>

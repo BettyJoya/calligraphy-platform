@@ -1,0 +1,36 @@
+.collecting-detail {
+  position: relative;
+  height: 100%;
+}
+
+.collecting-detail .collecting-header  {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.collecting-detail .collecting-header .collecting-nav-bar {
+  justify-content: flex-start;
+  margin-top: 10px;
+}
+
+.collecting-detail .collecting-header .collecting-nav-bar .nav-item {
+  max-width: 80px;
+}
+
+.collecting-main .writing-letter-list {
+  margin-top: 0;
+}
+
+.collecting-detail .generate-btn {
+  position: absolute;
+  right: 30px;
+  bottom: 30px;
+  color: white;
+  background-color: var(--main-theme-color);
+}
+
+.collecting-detail .generate-btn:hover {
+  background-color: var(--main-theme-hover-contained-btn-color);
+}

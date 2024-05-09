@@ -1,3 +1,8 @@
+.user-work-detail {
+  position: relative;
+  height: 100%;
+}
+
 .user-work-detail-header {
   display: flex;
   gap: 10px;
@@ -44,4 +49,109 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
+}
+
+.user-work-detail .article-content {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.user-work-detail .article-content .pics img {
+  width: 48%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.article-info {
+  padding: 20px;
+}
+
+.article-info .article-title {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.article-info .article-title span {
+  display: inline-block;
+  padding: 5px;
+  font-size: 14px;
+  color: var(--main-theme-color);
+  border: 1px solid var(--main-theme-color);
+  border-radius: 50px;
+}
+
+.article-info h2 {
+  margin: 0;
+  line-height: 55px;
+}
+
+.user-work-detail .operate {
+  position: absolute;
+  right: 30px;
+  bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.comment-drawer {
+  position: relative;
+  width: 400px;
+  height: 100%;
+}
+
+.comment-drawer .comment-input {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px;
+    border-top: 1px solid #ddd
+}
+
+.comment-drawer .comment-input input {
+  width: 80%;
+  height: 35px;
+  padding: 20px;
+  font-size: 16px;
+  caret-color: var(--main-font-color);
+  background-color: var(--main-background-color);
+  border: none;
+  border-radius: 50px;
+}
+
+.comment-list .comment-item {
+  padding: 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+.comment-list .comment-item .user-info{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.comment-list .comment-item .user-info .user-name {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.comment-list .comment-item .user-info img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.comment-list .comment-item .comment-time {
+  font-size: 14px;
+  text-align: right;
 }

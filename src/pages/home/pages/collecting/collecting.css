@@ -1,0 +1,79 @@
+textarea {
+  resize: none;
+  border: none;
+  outline: none;
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.collecting-input {
+  width: 90%;
+  font-size: 0;
+  border-radius: 20px;
+}
+
+#collecting-textarea {
+  width: 100%;
+  padding: 20px;
+  font-size: 18px;
+  caret-color: var(--main-font-color);
+  background-color: var(--main-background-color);
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.collecting-operation-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: var(--main-background-color);
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.collecting-input:focus-within {
+  border: 2px solid var(--main-font-color);
+}
+
+.collecting-nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 98%;
+  height: 40px;
+  margin: 0 auto;
+  margin-top: 20px;
+  background-color: var(--main-background-color);
+  border-radius: 40px;
+}
+
+.collecting-nav-bar .nav-item {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-weight: bold;
+  color: var(--main-font-color);
+  border-radius: 40px;
+}
+
+.collecting-nav-bar .nav-item:hover {
+  color: var(--hover-font-colo);
+}
+
+.collecting-nav-bar .nav-item:not(.active):hover {
+  background: var(--main-theme-hover-contained-color);
+}
+
+.collecting-nav-bar .active {
+  color: var(--active-font-color);
+  background-color: var(--active-background-color);
+}

@@ -1,0 +1,12 @@
+.article-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  height: 100%;
+  margin-right: -10px
+}
+
+.article-list > i {
+  width: 250px;
+  margin-right: 10px;
+}

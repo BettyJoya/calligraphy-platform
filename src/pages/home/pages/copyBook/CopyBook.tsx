@@ -1,35 +1,35 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, useCallback, useEffect, useState } from 'react';
 import './copyBook.css';
 import { Outlet, useNavigate, useParams } from 'react-router-dom';
 import { fetchData } from '@myCommon/fetchData.ts';
 import { CopyBookInfo } from './types.ts';
 import { BookCard } from './components/bookCard/BookCard.tsx';
-import { addHistoryFetch } from '@myCommon/addHistoryFetch.ts';
-import MessageSnackbar from '@myComponents/message/Message.tsx';
-import { useSelector } from 'react-redux';
-import { selectLogin } from '@myStore/slices/loginSlice.ts';
+import { IconButton } from '@mui/material';
+import { MdOutlineSearch } from 'react-icons/md';
 
 const CopyBook: FC = () => {
-  const loginState = useSelector(selectLogin);
   const navigate = useNavigate();
   const id = useParams().id;
+  const [searchText, setSearchText] = useState<string>('');
   const [bookList, setBookList] = useState<CopyBookInfo[]>([]);
-  const [filterBookList, setFilterBookList] = useState<CopyBookInfo[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
-  const [messageOpen, setMessageOpen] = useState(false);
-  const [message, setMessage] = useState('');
-  const [messageType, setMessageType] = useState<'success' | 'error' | 'info' | 'warning'>('success');
   // let bookListData: CopyBookInfo[] = [];
-  const getBookList = async () => {
+  const getBookList = useCallback(async (search: string) => {
     try {
-      const res = await fetchData('GET', {
-        url: 'http://localhost:3001/api/copybook/list'
-      });
+      console.log(searchText);
+      const res = await fetchData(
+        'POST',
+        {
+          url: 'http://localhost:3001/api/copybook/list'
+        },
+        {
+          search: search
+        }
+      );
 
       if (res.code === 200) {
         const data = res.data as { copybooks: CopyBookInfo[] };
         setBookList(data.copybooks);
-        setFilterBookList(data.copybooks);
         // bookListData = data.copybooks;
       }
     } catch (err) {
@@ -37,59 +37,62 @@ const CopyBook: FC = () => {
     } finally {
       setLoading(false);
     }
-  };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   useEffect(() => {
     // fetch book list
-    getBookList();
-  }, []);
+    getBookList('');
+  }, [getBookList]);
 
   const handleBookCardClick = (id: string) => {
     return () => {
-      if (loginState !== 'login') {
-        setMessage('请先登录');
-        setMessageType('error');
-        setMessageOpen(true);
-        return;
-      }
-      addHistoryFetch(id);
+      // addHistoryFetch(id);
       navigate(`/home/copyBook/${id}`);
     };
   };
 
   const handleFilter = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    const newBookList = bookList.filter(book => book.name.includes(value) || book.author.includes(value));
-    setFilterBookList(newBookList);
+    setSearchText(value);
   };
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+  const handleSearch = () => {
+    console.log(searchText);
+
+    setLoading(true);
+    getBookList(searchText);
+  };
+
   return !id ? (
     <div className="copy-book-content">
       <div className="search-bar">
-        <input className="search-input" type="text" placeholder="可搜索帖名、书法家" onChange={handleFilter} />
-      </div>
-      <div className="copy-book-card-list">
-        {filterBookList.length > 0 ? (
-          filterBookList.map(book => <BookCard key={book.id} info={book} onBookClick={handleBookCardClick(book.id)} />)
-        ) : (
-          <div>暂无数据</div>
-        )}
-        <i></i>
-        <i></i>
-        <i></i>
-        <i></i>
-        <i></i>
-        <MessageSnackbar
-          vertical="top"
-          horizontal="center"
-          open={messageOpen}
-          message={message}
-          type={messageType}
-          setOpen={setMessageOpen}
+        <input
+          className="search-input"
+          type="text"
+          value={searchText}
+          placeholder="可搜索帖名、书法家"
+          onChange={handleFilter}
         />
+        <IconButton aria-label="search" onClick={handleSearch}>
+          <MdOutlineSearch />
+        </IconButton>
       </div>
+      {loading ? (
+        <div>loading...</div>
+      ) : (
+        <div className="copy-book-card-list">
+          {bookList.length > 0 ? (
+            bookList.map(book => <BookCard key={book.id} info={book} onBookClick={handleBookCardClick(book.id)} />)
+          ) : (
+            <div>暂无数据</div>
+          )}
+          <i></i>
+          <i></i>
+          <i></i>
+          <i></i>
+          <i></i>
+        </div>
+      )}
     </div>
   ) : (
     <Outlet />

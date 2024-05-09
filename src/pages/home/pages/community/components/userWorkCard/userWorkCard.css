@@ -1,6 +1,8 @@
 .user-work-card {
   width: 250px;
   height: 300px;
+  margin-top: 20px;
+  margin-right: 10px;
   cursor: pointer;
   border-radius: 10px;
   box-shadow: 0 4px 8px 0 rgb(0 0 0 / 10%), 0 6px 20px 0 rgb(0 0 0 / 10%);
@@ -43,4 +45,11 @@
 
 .user-work-card .info .like svg {
   color: var(--main-theme-color);
+}
+
+.user-work-card .info .operation {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-end;
 }

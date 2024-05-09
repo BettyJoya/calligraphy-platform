@@ -1,7 +1,6 @@
 import { FC, useEffect, useState } from 'react';
 // import HeadImg from '../../../../assets/head.png';
 import './personal.css';
-import { useNavigate, useParams } from 'react-router-dom';
 import { Login } from '../login/Login.tsx';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectLogin, logoutAction } from '@myStore/slices/loginSlice.ts';
@@ -13,9 +12,8 @@ import { MdExitToApp } from 'react-icons/md';
 import localforage from 'localforage';
 import { EditInfo } from './components/editInfo/EditInfo.tsx';
 import UploadAvatar from '@myComponents/uploadImage/UploadImage.tsx';
-import { Collect } from './pages/collect/Collect.tsx';
-import { Record } from './pages/record/Record.tsx';
 import MessageSnackbar from '@myComponents/message/Message.tsx';
+import { ArticleList } from '../community/pages/articleList/ArticleList.tsx';
 
 const Personal: FC = () => {
   useLoginState();
@@ -92,18 +90,12 @@ const Personal: FC = () => {
 
 const PersonalContent: FC = () => {
   const loginState = useSelector(selectLogin);
-  const param = useParams();
-  const navigate = useNavigate();
+  const [kind, setKind] = useState<'like' | 'collect' | 'my'>('my');
   const [messageOpen, setMessageOpen] = useState(false);
   const [message, setMessage] = useState('');
   const [messageType, setMessageType] = useState<'success' | 'error' | 'info' | 'warning'>('success');
 
-  useEffect(() => {
-    if (!param.kind) {
-      navigate('/home/personal/record');
-    }
-  }, [navigate, param.kind]);
-  const changeKind = (kind: string) => {
+  const changeKind = (kind: 'like' | 'collect' | 'my') => {
     return () => {
       if (loginState !== 'login') {
         setMessage('请先登录');
@@ -111,32 +103,24 @@ const PersonalContent: FC = () => {
         setMessageOpen(true);
         return;
       }
-      if (param.kind !== kind) {
-        navigate(`/home/personal/${kind}`);
-      }
+      setKind(kind);
     };
   };
   return (
     <div className="personal-content">
       <div className="personal-nav">
-        <div className={param.kind === 'collect' ? 'nav-item active' : 'nav-item'} onClick={changeKind('collect')}>
-          我的收藏
-        </div>
-        <div className={param.kind === 'record' ? 'nav-item active' : 'nav-item'} onClick={changeKind('record')}>
-          浏览记录
-        </div>
-        <div className={param.kind === 'work' ? 'nav-item active' : 'nav-item'} onClick={changeKind('work')}>
+        <div className={kind === 'my' ? 'nav-item active' : 'nav-item'} onClick={changeKind('my')}>
           我的作品
+        </div>
+        <div className={kind === 'like' ? 'nav-item active' : 'nav-item'} onClick={changeKind('like')}>
+          我的点赞
+        </div>
+        <div className={kind === 'collect' ? 'nav-item active' : 'nav-item'} onClick={changeKind('collect')}>
+          我的收藏
         </div>
       </div>
       <div className="personal-main">
-        {param.kind === 'record' ? (
-          <Record />
-        ) : param.kind === 'collect' ? (
-          <Collect />
-        ) : (
-          <div className="work">暂无作品</div>
-        )}
+        <ArticleList type={kind}></ArticleList>
       </div>
       <MessageSnackbar
         vertical="top"

@@ -1,6 +1,6 @@
 import { fetchData } from '@myCommon/fetchData.ts';
 import { FC, useEffect, useState } from 'react';
-import type { CopyBookInfo } from '../../../copyBook/types';
+import type { CopyBookInfo } from '../../../copyBook/types.ts';
 import { BookCard } from '../../../copyBook/components/bookCard/BookCard.tsx';
 import { useNavigate } from 'react-router-dom';
 import { selectLogin } from '@myStore/slices/loginSlice.ts';

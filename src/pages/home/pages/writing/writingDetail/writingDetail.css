@@ -1,3 +1,54 @@
 /* .writing {
   
 } */
+
+.writing-content {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  padding-top: 20px;
+}
+
+.writing-content .operation-btn {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+.writing-content .operation-btn .btn {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 10px;
+  font-size: 16px;
+  color: var(--main-font-color);
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.writing-content .operation-btn .btn:hover {
+  background-color: var(--main-theme-hover-contained-color);
+}
+
+.writing-content .operation-btn .btn .compare-btn:hover {
+  background: none;
+}
+
+.similarity {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.writing-detail .footer-btn {
+  margin: 20px auto;
+}
+
+.dialog-content textarea {
+  margin-top: 20px;
+  border-radius: 20px;
+}

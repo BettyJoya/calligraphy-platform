@@ -3,7 +3,7 @@
   height: 100%;
 }
 
-.copy-book-detail-header {
+.detail-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -13,16 +13,16 @@
   border-bottom: 1px solid #e5e5e5;
 }
 
-.copy-book-detail-header h3 {
+.detail-header h3 {
   font-size: 24px;
 }
 
-.copy-book-detail-header .operate {
+.detail-header .operate {
   display: flex;
   align-items: center;
 }
 
-.copy-book-detail-header .btn {
+.detail-header .btn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -32,11 +32,11 @@
   border-radius: 50%;
 }
 
-.copy-book-detail-header .btn:hover {
+.detail-header .btn:hover {
   background-color: var(--main-theme-hover-contained-color);
 }
 
-.copy-book-detail-header .btn svg {
+.detail-header .btn svg {
   width: 25px;
   height: 25px;
 }
@@ -76,7 +76,7 @@
   margin: 30px 0;
 }
 
-.copy-book-detail-footer .footer-btn {
+.footer-btn {
   width: 150px;
   height: 50px;
   font-weight: 600;
@@ -87,6 +87,6 @@
   border-radius: 20px;
 }
 
-.copy-book-detail-footer .footer-btn:hover {
+.footer-btn:hover {
   background-color: var(--active-background-color);
 }

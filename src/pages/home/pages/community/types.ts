@@ -1,3 +1,17 @@
+export interface ArticleInfo {
+  content: string;
+  title: string;
+  id: string;
+  letter_pic: string;
+  user_pic: string;
+  user_avatar: string;
+  user_name: string;
+  is_like: string;
+  is_collect: string;
+  likes_count: string;
+  collects_count: string;
+}
+
 export interface WorkInfo {
   id: string;
   userName: string;
@@ -8,11 +22,20 @@ export interface WorkInfo {
   likeCount: number;
 }
 
-export interface WorkInfoDetail extends WorkInfo {
+export interface ArticleInfoDetail extends ArticleInfo {
+  // commentCount: number;
+  is_attention: boolean;
+  user_email: string;
+  similarity: string;
+  font_type: string;
+  source_book: string;
+}
+
+export interface CommentInfo {
+  id: string;
+  user_email: string;
+  user_name: string;
+  user_avatar: string;
   content: string;
-  commentCount: number;
-  isAttention: boolean;
-  isCollected: boolean;
-  collectCount: number;
-  createTime: string;
+  create_time: string;
 }

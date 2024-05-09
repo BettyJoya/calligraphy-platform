@@ -1,7 +1,7 @@
 import { IconType } from 'react-icons';
-import { FaMap, FaFeatherAlt, FaFortAwesome, FaGhost } from 'react-icons/fa';
+import { FaMap, FaFeatherAlt, FaFortAwesome, FaGhost, FaGripHorizontal } from 'react-icons/fa';
 
-type navKey = 'copyBook' | 'writing' | 'community' | 'personal';
+type navKey = 'copyBook' | 'writing' | 'collecting' | 'community' | 'personal';
 
 interface navItem {
   key: navKey;
@@ -19,6 +19,11 @@ export const navList: navItem[] = [
     key: 'writing',
     title: '临摹',
     icon: FaFeatherAlt
+  },
+  {
+    key: 'collecting',
+    title: '集字',
+    icon: FaGripHorizontal
   },
   {
     key: 'community',

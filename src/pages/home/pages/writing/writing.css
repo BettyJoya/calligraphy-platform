@@ -1,5 +1,14 @@
-.writing .search-bar {
+.writing .search-header {
+  display: flex;
   gap: 20px;
+  align-items: center;
+  width: 60%;
+  margin: 0 auto;
+}
+
+.writing .search-bar {
+  width: 90%;
+  margin: 0;
 }
 
 .writing-letter-list {
@@ -17,7 +26,8 @@
 }
 
 .select-form-control {
-  width: 10%;
+  width: 12%;
+  min-width: 65px !important;
   height: 55px;
 }
 
@@ -75,4 +85,9 @@ img {
 
 .letter-card .card-text h3, .letter-card .card-text p {
   margin: 0;
+}
+
+.writing-letter-list .loading {
+  padding: 20px 0;
+  text-align: center;
 }

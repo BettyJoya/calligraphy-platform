@@ -1,12 +1,16 @@
 .search-bar {
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 100%;
+  justify-content: space-between;
+  width: 50%;
+  padding-right: 10px;
+  margin: 0 auto;
+  background-color: var(--main-background-color);
+  border-radius: 50px;
 }
 
 .search-input {
-  width: 50%;
+  width: 90%;
   height: 55px;
   padding: 20px 30px;
   font-size: 18px;
@@ -14,13 +18,18 @@
   background-color: var(--main-background-color);
   border: none;
   border-radius: 50px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
   caret-shape: block;
-
-  /* outline: 2px solid var(--main-font-color); */
+  outline: none;
 }
 
-.search-input:focus {
-  outline: 2px solid var(--main-font-color);
+.search-bar:focus-within {
+  border: 2px solid var(--main-font-color);
+}
+
+.search-bar button {
+  width: 10%
 }
 
 .copy-book-card-list {
